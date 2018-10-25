@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="UTF-8"/>
+   <title>Javascript Fundamentals</title>
+   <link rel="stylesheet" type="text/css" href="style.css">
+ </head>
+ <body>
+ <section class="content">
+   <div class="header">
+      <h2>Tutorial:Javascript Fundamentals</h2>
+   </div>
+   
+   <div class="maincontent">
+   
+      <form action="" method="post" name="myform" onsubmit="return validateForm()">
+	      
+		  <table>
+		    
+			
+			
+				<tr>
+					
+					<td>Name</td>
+				    <td><input type="text" name="name"/> </td>
+						 
+				</tr>
+
+                <tr>
+					
+					<td>Email</td>
+				    <td><input type="text" name="email"/> </td>
+						 
+				</tr>					
+					
+					 
+				<tr>
+					
+					<td>Telephone</td>
+				    <td><input type="text" name="telephone"/><br/> 
+					    <input type="checkbox" name="notcall" onclick="enableDisable(this)"/>Please do not call me.
+					</td>
+						 
+				</tr>	
+				
+				 <tr>
+					
+					<td>What can we help you with?</td>
+				    <td>
+					    <select name="subject" value="">
+						    <option>Select One</option>
+							<option>Customer Service</option>
+							<option>Question</option>
+							<option>Comment</option>
+							<option>Others</option>
+						
+						</select>
+					
+					</td>
+					
+				</tr>
+				
+				 <tr>
+					
+					<td>Comment</td>
+				    <td><input type="text" name="comment"/> </td>
+						 
+				</tr>				 
+					
+			
+				<tr>
+					 
+					 <td></td>
+					 <td>
+						 <input type="submit" name="submit" value="Submit"/>
+						 <input type="reset" name="reset" value="Refresh"/> 
+						 
+					 </td>
+					 
+				
+				
+				</tr>
+				
+				
+				 <tr>
+					
+					<td></td>
+				    <td>
+					     <div id="show"></div>
+					</td>
+						 
+				</tr>	
+			
+		  </table>
+	  
+	  </form>
+	  
+	  <script type="text/javascript">
+	  
+	  function validateForm(){
+	  
+	     var name = document.myform.name;
+		 var email = document.myform.email;
+		 var telephone = document.myform.telephone;
+		 var notcall = document.myform.notcall;
+		 var subject = document.myform.subject;
+		 var comment = document.myform.comment;
+		 var submit = document.myform.submit;
+		 var reset = document.myform.reset;
+		 
+		 if(name.value == ""){
+		 
+		     document.getElementById("show").innerHTML = "Please enter your name....";
+		     return false;
+		 }
+		 
+		 if(email.value == ""){
+		 
+		     document.getElementById("show").innerHTML = "Please enter your e-mail....";
+		     return false;
+		 }
+		 
+		 if(email.value.indexOf("@",0)<0){
+		 
+		     document.getElementById("show").innerHTML = "Please enter your valid e-mail adress....";
+		     return false;
+		 }
+		 
+		 if(email.value.indexOf(".",0)<0){
+		 
+		     document.getElementById("show").innerHTML = "Please enter your valid e-mail adress....";
+		     return false;
+		 }
+	  
+	     if(telephone.value == "" && notcall.checked == false ){
+		 
+		     document.getElementById("show").innerHTML = "Please enter your telephone no....";
+		     return false;
+		 }
+		 
+		  if(subject.selectedIndex < 1){
+		 
+		     document.getElementById("show").innerHTML = "Please tell us how we can help you";
+		     return false;
+		 }
+	  
+	    if(comment.value == ""){
+		 
+		     document.getElementById("show").innerHTML = "Please put a comment.";
+		     return false;
+		 }
+	  
+	  }
+	  
+	  function enableDisable(chbox){
+	      if(chbox.checked == true){
+		       document.myform.telephone.disabled = true;
+		  
+		  }else{
+		      document.myform.telephone.disabled = false;
+		  
+		  }
+	  
+	  }
+	  
+	  
+	  
+	 /* Form Element-Radio
+	 
+	 
+	 function testCode(){
+	   document.write("You Selected: " +selectCode());
+	  
+	  }
+	  
+	  function selectCode(){
+	  
+	   for(i=0;i<=4;i++){
+	   
+	      var myvalue = document.myform.chbox[i];
+		  if(myvalue.checked){
+		    return myvalue.value
+		  }
+	   }
+	 
+	  }
+	  */
+	  
+	 /*Form Element-Checkbox Multiple Value
+
+	 function testCode(){
+	   document.write("You Selected: " +selectCode());
+	  
+	  }
+	  
+	  function selectCode(){
+	  
+	   var cd = "<ul>";
+	   for(i=0;i<=4;i++){
+	   
+	      var myvalue = document.myform.chbox[i];
+		  if(myvalue.checked){
+		    cd +="<li>" +myvalue.value;
+		  }
+	   }
+	   cd +="</ul>";
+	   return cd
+	  }
+	  */
+	  
+	  
+	  
+	  
+	  
+	  
+	 /*Form Element-Checkbox 
+	  
+	  function doCal(form,pfield){
+	   if(pfield == "result"){
+	     if(form.chbox.checked){
+		 
+		  form.t1.value = math.sqrt(form.result.value);
+		 }else{
+		     form.t1.value = form.result.value/2
+		 }
+	   
+	   }else{
+	     if(form.chbox.checked){
+		 
+		  form.result.value = form.t1.value * form.t1.value;
+		 }else{
+		     form.result.value = form.t1.value * 2;
+		 }
+	   
+	   }
+	  
+	  }
+	  */
+	  
+	  
+	  
+	    /* Form Element-Button
+		
+		
+		function testResult(form){
+		  
+		  var testvar = form.inputbox.value;
+		  if(testvar == ""){
+		   alert("Please Type Somethings.....");
+		  }else{
+		    alert("Your Typed ....." +testvar);
+		  }
+		 
+		 }
+	  */
+	  
+	  
+	  
+	  </script>
+   
+   </div>
+   
+   <div class="footer">
+      <h2>Basic Web Development</h2>
+   </div>
+ </section>
+ 
+ <body>
+</html>
